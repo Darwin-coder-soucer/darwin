@@ -1,0 +1,65 @@
+@startuml
+
+class Usuario {
+    - nombre: String
+    - email: String
+    - contraseña: String
+    + autenticar(): boolean
+    + actualizarPerfil(): boolean
+    + realizarBusqueda(): boolean
+    + filtrarResultados(): boolean
+    + verDetalleslibros(): boolean
+    + reservarlibros(): boolean
+    + accederSoporte(): boolean
+}
+
+class Libros {
+    - id: int
+    - descripcion: String
+    - precio: double
+    - receña: double
+    - autor: double
+    - categorias: double
+    // Otros atributos de libro
+}
+
+class Busqueda {
+    - resultados: List<libros>
+    + validarResultados(): boolean
+}
+
+class Filtro {
+    - tipo: String
+    - valor: String
+    + aplicarFiltro(): boolean
+}
+
+class Perfil {
+    - usuario: Usuario
+    + verPerfil(): boolean
+    + actualizarPerfil(): boolean
+}
+
+class Reserva {
+    - usuario: Usuario
+    - libros: libros
+    + realizarReserva(): boolean
+}
+
+class Soporte {
+    - usuario: Usuario
+    + accederSoporte(): boolean
+}
+
+Usuario --> Perfil
+Usuario --> Busqueda
+Usuario --> Reserva
+Usuario --> Soporte
+Busqueda --> Filtro
+Busqueda --> libros
+Perfil --> Usuario
+Reserva --> Usuario
+Reserva --> libros
+Soporte --> Usuario
+
+@enduml
